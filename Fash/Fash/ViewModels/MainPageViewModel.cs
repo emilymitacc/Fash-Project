@@ -1,40 +1,28 @@
-﻿using Prism.Commands;
+﻿using System.Windows.Input;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Fash.ViewModels
 {
-    public class MainPageViewModel : BindableBase, INavigationAware
+    public class MainPageViewModel : BindableBase
     {
-        private string _title;
-        public string Title
+        private readonly INavigationService _navigationService;
+        public ICommand GoToLoginCommand => new DelegateCommand(GoToLogin);
+        public ICommand GoToSignUpCommand => new DelegateCommand(GoToSignUp);
+
+        public MainPageViewModel(INavigationService navigationService)
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            _navigationService = navigationService;
         }
 
-        public MainPageViewModel()
+        private async void GoToLogin()
         {
-
+            await _navigationService.NavigateAsync("LoginPage");
         }
-
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        private async void GoToSignUp()
         {
-
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
-
-        }
-
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            if (parameters.ContainsKey("title"))
-                Title = (string)parameters["title"] + " and Prism";
+            await _navigationService.NavigateAsync("SignUpPage");
         }
     }
 }

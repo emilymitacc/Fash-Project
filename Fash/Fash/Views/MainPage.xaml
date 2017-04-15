@@ -4,8 +4,29 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Fash.Views.MainPage"
-             Title="MainPage">
-  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
-  </StackLayout>
+             Title="MainPage"
+             BackgroundImage="dress.jpg">
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+          Padding="10" RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Label Text="fash." Grid.ColumnSpan="2" HorizontalOptions="Center"
+               FontSize="90" TextColor="Black"/>
+        <Label Text="your 24th fash store" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" HorizontalOptions="Center"
+               FontSize="25" TextColor="Black"/>
+
+        <Button Text="Signup" Grid.Row="3" Command="{Binding GoToSignUpCommand}"
+                BackgroundColor="{StaticResource SecondaryColor}" TextColor="White" Grid.Column="0" HorizontalOptions="FillAndExpand"/>
+        <Button Text="Login" Grid.Row="3" Command="{Binding GoToLoginCommand}" BackgroundColor="{StaticResource PrimaryColor}" TextColor="White"
+                Grid.Column="1" HorizontalOptions="FillAndExpand"/>
+    </Grid>
 </ContentPage>

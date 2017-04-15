@@ -3,5 +3,10 @@
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                         xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
                         x:Class="Fash.App">
-
+  <prism:PrismApplication.Resources>
+    <ResourceDictionary>
+      <Color x:Key="PrimaryColor">#00B690</Color>
+      <Color x:Key="SecondaryColor">#FF6400</Color>
+    </ResourceDictionary>
+  </prism:PrismApplication.Resources>
 </prism:PrismApplication>
